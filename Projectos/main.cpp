@@ -10,19 +10,15 @@ struct file_input_retriever : public input_retriever
 {
 	std::vector<int> retrieve() const override
 	{
+		auto current_int = int{};
 		auto result = std::vector<int>{};
 		auto inputstream = std::ifstream{"inputfile", std::ios_base::binary};
 
-		std::string line;
-		while (getline(inputstream >> std::ws, line))
-		{
-			int current_int;
-			std::stringstream ss{line};
+		inputstream >> std::ws;
 
-			while (ss >> current_int)
-			{
-				result.push_back(current_int);
-			}
+		while (inputstream >> current_int)
+		{
+			result.push_back(current_int);
 		}
 
 		return result;
