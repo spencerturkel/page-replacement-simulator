@@ -111,9 +111,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="input_file_retriever.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="input_file_retriever.h" />
     <ClInclude Include="input_retriever.h" />
   </ItemGroup>
   <ItemGroup>
