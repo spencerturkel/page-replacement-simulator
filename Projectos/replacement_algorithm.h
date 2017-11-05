@@ -9,7 +9,7 @@ class replacement_algorithm
 public:
 	const std::string name;
 
-	virtual auto run(const std::vector<int>& input) -> trace_result = 0;
+	virtual auto run(const std::vector<int>& input) -> trace_result const = 0;
 
 	virtual ~replacement_algorithm() = default;
 protected:
