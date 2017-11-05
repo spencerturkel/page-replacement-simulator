@@ -2,6 +2,9 @@
 
 !.gitattributes
 !.gitignore
-!CMakeLists.txt
-!main.c
 !README.md
+
+!os-group-project.sln
+!os-group-project
+!os-group-project/*.cpp
+!os-group-project/*.vcx*
