@@ -29,6 +29,9 @@
     <ClInclude Include="input_file_retriever.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="replacement_algorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="trace_result.h">
