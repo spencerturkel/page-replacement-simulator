@@ -28,6 +28,8 @@ auto most_frequently_used::run(const std::vector<int>& input) -> trace_result co
 		table.push_back({ -1,  std::numeric_limits<int>::max()});
 	}
 
+	std::make_heap(table.begin(), table.end(), table_compare);
+
 	for (auto&& value : input)
 	{
 		const auto found_page = std::find_if(table.begin(), table.end(), [&](const auto& page) -> auto
@@ -38,6 +40,7 @@ auto most_frequently_used::run(const std::vector<int>& input) -> trace_result co
 		if (found_page == table.cend())
 		{
 			std::pop_heap(table.begin(), table.end(), table_compare);
+			table.pop_back();
 			table.push_back({value, 1});
 			std::push_heap(table.begin(), table.end(), table_compare);
 			result.misses++;
