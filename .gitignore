@@ -3,6 +3,7 @@
 !.gitattributes
 !.gitignore
 !CMakeLists.txt
-!main.cpp
 !notes.md
 !README.md
+
+!main.cpp
