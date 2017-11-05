@@ -24,7 +24,10 @@
     <ClCompile Include="first_in_first_out.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="replace_algorithm.cpp">
+    <ClCompile Include="most_frequently_used.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="replacement_algorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -39,6 +42,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="file_input_retriever.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="most_frequently_used.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

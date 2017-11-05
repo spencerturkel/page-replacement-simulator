@@ -29,11 +29,6 @@ auto first_in_first_out::run(const std::vector<int>& input) -> const trace_resul
 	return result;
 }
 
-first_in_first_out::first_in_first_out(const int page_table_size): replacement_algorithm(page_table_size)
+first_in_first_out::first_in_first_out(const int page_table_size): replacement_algorithm("First In First Out", page_table_size)
 {
 }
-
-
-//first_in_first_out::~first_in_first_out()
-//{
-//}

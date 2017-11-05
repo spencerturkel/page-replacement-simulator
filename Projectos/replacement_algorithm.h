@@ -19,5 +19,5 @@ public:
 	virtual ~replacement_algorithm() = default;
 protected:
 	int page_table_size_;
-	explicit replacement_algorithm(int page_table_size);
+	explicit replacement_algorithm(std::string name, int page_table_size);
 };
