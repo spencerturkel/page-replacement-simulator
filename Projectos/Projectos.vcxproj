@@ -114,6 +114,7 @@
     <ClCompile Include="first_in_first_out.cpp" />
     <ClCompile Include="input_file_retriever.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="replace_algorithm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="first_in_first_out.h" />

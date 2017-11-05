@@ -1,5 +1,6 @@
-#include "first_in_first_out.h"
 #include <deque>
+
+#include "first_in_first_out.h"
 
 auto first_in_first_out::run(const std::vector<int>& input) -> const trace_result
 {
@@ -33,6 +34,6 @@ first_in_first_out::first_in_first_out(const int page_table_size): replacement_a
 }
 
 
-first_in_first_out::~first_in_first_out()
-{
-}
+//first_in_first_out::~first_in_first_out()
+//{
+//}

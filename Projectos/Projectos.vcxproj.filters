@@ -24,6 +24,9 @@
     <ClCompile Include="first_in_first_out.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="replace_algorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="input_retriever.h">
