@@ -9,6 +9,5 @@ public:
 	auto run(const std::vector<int>& input)-> const trace_result override;
 
 	explicit first_in_first_out(int page_table_size);
-//	~first_in_first_out();
 };
 
