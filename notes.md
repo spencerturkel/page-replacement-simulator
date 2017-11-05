@@ -12,16 +12,25 @@
 - class ReplacementAlgorithm {
   public:
     const std::string name;
-    virtual auto run(PageTable& table, const std::vector<int>& input) -> TraceResult = 0;
+    virtual auto run(const std::vector<int>& input) -> TraceResult = 0;
+  protected:
+    int pageTableSize;
+    ReplacementAlgorithm(int pageTableSize);
   };
+
+  ReplacementAlgorithm(int pageTableSize): pageTableSize(pageTableSize) {}
 - class FirstInFirstOut : public ReplacementAlgorithm {
      const auto name = "First In First Out"s;
-     override TraceResult run(PageTable& table, const std::vector<int>& input);
+     override TraceResult run(const std::vector<int>& input);
   };
 
-  auto FirstInFirstOut::run(PageTable& table, const std::vector<int>& input) -> TraceResult {
+  auto FirstInFirstOut::run(const std::vector<int>& input) -> TraceResult {
+     std::queue<int> pageTable{-1, pageTableSize};
      for (const auto& pageNumber : input) {
-
+        if (std::find(pageTable.cbegin(), pageTable.cend(), pageNumber) == pageTable.cend()) {
+            pageTable.pop();
+            pageTable.push_back(pageNumber);
+        }
      }
   }
 # Algorithm
