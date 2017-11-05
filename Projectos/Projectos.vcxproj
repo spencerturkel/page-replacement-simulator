@@ -118,7 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="first_in_first_out.h" />
-    <ClInclude Include="input_file_retriever.h" />
+    <ClInclude Include="file_input_retriever.h" />
     <ClInclude Include="input_retriever.h" />
     <ClInclude Include="replacement_algorithm.h" />
   </ItemGroup>

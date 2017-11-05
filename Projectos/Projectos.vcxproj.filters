@@ -32,13 +32,13 @@
     <ClInclude Include="input_retriever.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="input_file_retriever.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="replacement_algorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="first_in_first_out.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="file_input_retriever.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

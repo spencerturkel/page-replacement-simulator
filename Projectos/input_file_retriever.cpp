@@ -1,6 +1,6 @@
 #include <fstream>
 
-#include "input_file_retriever.h"
+#include "file_input_retriever.h"
 
 
 std::vector<int> file_input_retriever::retrieve() const

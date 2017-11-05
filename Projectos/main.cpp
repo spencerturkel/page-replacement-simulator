@@ -1,20 +1,31 @@
-// project 4
-
 #include <iostream>
-#include <fstream>
+#include <memory>
 #include <string>
 
-#include "input_file_retriever.h"
-#include "replacement_algorithm.h"
+#include "file_input_retriever.h"
 #include "first_in_first_out.h"
-#include <memory>
+#include "replacement_algorithm.h"
+
+auto make_retriever() -> std::unique_ptr<input_retriever>
+{
+	return std::make_unique<file_input_retriever>();
+}
+
+auto make_algorithms() -> std::vector<std::unique_ptr<replacement_algorithm>>
+{
+	auto algorithms = std::vector<std::unique_ptr<replacement_algorithm>>{};
+
+	algorithms.emplace_back(std::make_unique<first_in_first_out>(4));
+
+	return algorithms;
+}
 
 int main()
 {
-	const auto algorithms = std::vector<std::unique_ptr<replacement_algorithm>>{std::make_unique<first_in_first_out>(4)};
-	file_input_retriever retriever;
+	const auto algorithms = make_algorithms();
+	const auto retriever = make_retriever();
 
-	const auto input = retriever.retrieve();
+	const auto input = retriever->retrieve();
 
 	for (auto&& alg : algorithms)
 	{
@@ -24,13 +35,8 @@ int main()
 		std::cout << "\tMisses: " << trace.misses << "\n\n";
 	}
 
-	for (auto&& value : input)
-	{
-		std::cout << "Value: " << value << "\n";
-	}
+	std::cout << "Enter anything to exit...\n";
 
-	std::cout << "Done reading\n";
-
-	int n;
-	std::cin >> n;
+	std::string line;
+	std::cin >> line;
 }
