@@ -30,6 +30,9 @@
     <ClCompile Include="replacement_algorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="optimal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="input_retriever.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="most_frequently_used.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="optimal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,7 @@
-#include "most_frequently_used.h"
+#include <limits>
 #include <queue>
+
+#include "most_frequently_used.h"
 
 struct page
 {
@@ -21,6 +23,11 @@ auto most_frequently_used::run(const std::vector<int>& input) -> trace_result co
 	auto result = trace_result{};
 	auto table = std::vector<page>{};
 
+	for (auto i = 0; i < page_table_size_; ++i)
+	{
+		table.push_back({ -1,  std::numeric_limits<int>::max()});
+	}
+
 	for (auto&& value : input)
 	{
 		const auto found_page = std::find_if(table.begin(), table.end(), [&](const auto& page) -> auto
@@ -30,6 +37,7 @@ auto most_frequently_used::run(const std::vector<int>& input) -> trace_result co
 
 		if (found_page == table.cend())
 		{
+			std::pop_heap(table.begin(), table.end(), table_compare);
 			table.push_back({value, 1});
 			std::push_heap(table.begin(), table.end(), table_compare);
 			result.misses++;

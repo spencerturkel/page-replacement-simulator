@@ -115,6 +115,7 @@
     <ClCompile Include="input_file_retriever.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="most_frequently_used.cpp" />
+    <ClCompile Include="optimal.cpp" />
     <ClCompile Include="replacement_algorithm.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +123,7 @@
     <ClInclude Include="file_input_retriever.h" />
     <ClInclude Include="input_retriever.h" />
     <ClInclude Include="most_frequently_used.h" />
+    <ClInclude Include="optimal.h" />
     <ClInclude Include="replacement_algorithm.h" />
   </ItemGroup>
   <ItemGroup>
