@@ -4,8 +4,9 @@
 
 #include "file_input_retriever.h"
 #include "first_in_first_out.h"
-#include "replacement_algorithm.h"
+#include "optimal.h"
 #include "most_frequently_used.h"
+#include "replacement_algorithm.h"
 
 auto make_retriever() -> std::unique_ptr<input_retriever>
 {
@@ -19,6 +20,7 @@ auto make_algorithms() -> std::vector<std::unique_ptr<replacement_algorithm>>
 	constexpr auto number_of_pages = 4;
 
 	algorithms.emplace_back(std::make_unique<first_in_first_out>(number_of_pages));
+	algorithms.emplace_back(std::make_unique<optimal>(number_of_pages));
 	algorithms.emplace_back(std::make_unique<most_frequently_used>(number_of_pages));
 
 	return algorithms;
