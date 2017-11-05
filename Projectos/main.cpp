@@ -20,7 +20,7 @@ auto make_algorithms() -> std::vector<std::unique_ptr<replacement_algorithm>>
 	return algorithms;
 }
 
-int main()
+auto main() -> int
 {
 	const auto algorithms = make_algorithms();
 	const auto retriever = make_retriever();
@@ -37,6 +37,5 @@ int main()
 
 	std::cout << "Enter anything to exit...\n";
 
-	std::string line;
-	std::cin >> line;
+	std::cin.get();
 }
