@@ -20,7 +20,9 @@
   };
 
   auto FirstInFirstOut::run(PageTable& table, const std::vector<int>& input) -> TraceResult {
+     for (const auto& pageNumber : input) {
 
+     }
   }
 # Algorithm
 - Start with no pages loaded
