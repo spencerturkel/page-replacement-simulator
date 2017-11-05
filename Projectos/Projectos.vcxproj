@@ -117,7 +117,7 @@
     <ClInclude Include="input_retriever.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="inputfile.dat" />
+    <None Include="inputfile" />
     <None Include="trace_result.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

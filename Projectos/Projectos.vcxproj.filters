@@ -28,7 +28,7 @@
     <None Include="trace_result.h">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="inputfile.dat">
+    <None Include="inputfile">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
