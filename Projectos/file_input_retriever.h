@@ -3,5 +3,5 @@
 
 struct file_input_retriever : public input_retriever
 {
-	std::vector<int> retrieve() const override;
+	std::vector<std::vector<int>> retrieve() const override;
 };

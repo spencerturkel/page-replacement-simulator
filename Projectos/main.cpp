@@ -35,14 +35,26 @@ auto main() -> int
 	const auto algorithms = make_algorithms();
 	const auto retriever = make_retriever();
 
-	const auto input = retriever->retrieve();
+	const auto all_inputs = retriever->retrieve();
 
-	for (auto&& alg : algorithms)
+	for (auto&& input : all_inputs)
 	{
-		const auto trace = alg->run(input);
-		std::cout << "Algorithm: " << alg->name << '\n';
-		std::cout << "\tHits: " << trace.hits << '\n';
-		std::cout << "\tMisses: " << trace.misses << "\n\n";
+		std::cout << "Input: ";
+
+		for (auto&& value : input)
+		{
+			std::cout << value << ' ';
+		}
+
+		std::cout << '\n';
+
+		for (auto&& alg : algorithms)
+		{
+			const auto trace = alg->run(input);
+			std::cout << "\tAlgorithm: " << alg->name << '\n';
+			std::cout << "\t\tHits: " << trace.hits << '\n';
+			std::cout << "\t\tMisses: " << trace.misses << "\n\n";
+		}
 	}
 
 	std::cout << "Enter anything to exit...\n";
