@@ -2,6 +2,7 @@
 // LFU algorithm
 
 #include "least_frequently_used.h"
+#include <iostream>
 #define PFRAMES 4
 #define PAGES 50
 
@@ -66,6 +67,14 @@ auto least_frequently_used::run(const std::vector<int>& input) -> const trace_re
 			pos[frames[temp]] = 0;
 			frames[temp] = input[position];
 		}
+		if (position == 0) {
+			std::cout << "-------------------" << std::endl;
+		}
+		for (int i = 0; i < PFRAMES; ++i)
+		{
+			std::cout << frames[i] << " ";
+		}
+		std::cout << std::endl;
 		position++;
 	}
 	result.misses = input.size() - result.hits;

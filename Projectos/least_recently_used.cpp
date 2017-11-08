@@ -2,6 +2,7 @@
 // LRU page replacement algorithm
 
 #include "least_recently_used.h"
+#include <iostream>
 #define PFRAMES 4
 
 least_recently_used::least_recently_used(const int page_table_size) : replacement_algorithm("Least Recently Used", page_table_size)
@@ -45,8 +46,23 @@ auto least_recently_used::run(const std::vector<int>& input) -> const trace_resu
 			frames[min] = input[position];
 			count[min] = position + 1;
 			result.misses++;
+
+			if (position == 0) {
+				std::cout << "-------------------" << std::endl;
+			}
+
+			while (state < PFRAMES) {
+				std::cout << frames[state] << " ";
+				state++;
+			}
+			std::cout << std::endl;
 		}
 		else {
+			while (state < PFRAMES) {
+				std::cout << frames[state] << " ";
+				state++;
+			}
+			std::cout << std::endl;
 			result.hits++;
 		}
 		position++;
