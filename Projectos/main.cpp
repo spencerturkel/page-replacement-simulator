@@ -7,6 +7,8 @@
 #include "optimal.h"
 #include "most_frequently_used.h"
 #include "replacement_algorithm.h"
+#include "least_recently_used.h"
+#include "least_frequently_used.h"
 
 auto make_retriever() -> std::unique_ptr<input_retriever>
 {
@@ -22,6 +24,8 @@ auto make_algorithms() -> std::vector<std::unique_ptr<replacement_algorithm>>
 	algorithms.emplace_back(std::make_unique<first_in_first_out>(number_of_pages));
 	algorithms.emplace_back(std::make_unique<optimal>(number_of_pages));
 	algorithms.emplace_back(std::make_unique<most_frequently_used>(number_of_pages));
+	algorithms.emplace_back(std::make_unique<least_recently_used>(number_of_pages));
+	algorithms.emplace_back(std::make_unique<least_frequently_used>(number_of_pages));
 
 	return algorithms;
 }
