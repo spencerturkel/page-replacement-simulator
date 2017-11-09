@@ -127,6 +127,7 @@
     <ClInclude Include="iterative_replacement_algorithm.h" />
     <ClInclude Include="least_frequently_used.h" />
     <ClInclude Include="least_recently_used.h" />
+    <ClInclude Include="lfu_iterative_replacement_algorithm.h" />
     <ClInclude Include="mfu_iterative_replacement_algorithm.h" />
     <ClInclude Include="most_frequently_used.h" />
     <ClInclude Include="optimal_iterative_replacement_algorithm.h" />

@@ -6,6 +6,7 @@
 #include "file_input_retriever.h"
 #include "iterative_replacement_algorithm.h"
 #include "fifo_iterative_replacement_algorithm.h"
+#include "lfu_iterative_replacement_algorithm.h"
 #include "mfu_iterative_replacement_algorithm.h"
 #include "optimal_iterative_replacement_algorithm.h"
 
@@ -69,7 +70,8 @@ auto main() -> int
 	for (auto&& input : all_inputs)
 	{
 		report_iterative_algorithm<fifo_iterative_replacement_algorithm>(4, input, false);
-		report_iterative_algorithm<mfu_iterative_replacement_algorithm>(4, input, true);
+		report_iterative_algorithm<lfu_iterative_replacement_algorithm>(4, input, true);
+		report_iterative_algorithm<mfu_iterative_replacement_algorithm>(4, input, false);
 		report_iterative_algorithm<optimal_iterative_replacement_algorithm>(4, input, false);
 	}
 

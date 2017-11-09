@@ -4,11 +4,6 @@
 
 namespace
 {
-	auto page_used_less_than(const page& one, const page& two) -> bool
-	{
-		return one.used < two.used;
-	}
-
 	struct mfu_iterative_replacement_algorithm : frequency_iterative_replacement_algorithm
 	{
 		explicit mfu_iterative_replacement_algorithm(int page_table_size);

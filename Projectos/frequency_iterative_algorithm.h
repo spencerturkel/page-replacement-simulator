@@ -13,6 +13,11 @@ namespace
 		int used;
 	};
 
+	auto page_used_less_than(const page& one, const page& two) -> bool
+	{
+		return one.used < two.used;
+	}
+
 	auto page_invalid(const page& p) -> bool
 	{
 		return p.number == -1;
