@@ -42,6 +42,9 @@
     <ClCompile Include="iterative_replacement_algorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fifo_iterative_replacement_algorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="input_retriever.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="iterative_replacement_algorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fifo_iterative_replacement_algorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

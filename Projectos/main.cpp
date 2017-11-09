@@ -10,6 +10,8 @@
 #include "replacement_algorithm.h"
 #include "least_recently_used.h"
 #include "least_frequently_used.h"
+#include "fifo_iterative_replacement_algorithm.h"
+#include <numeric>
 
 auto make_retriever() -> std::unique_ptr<input_retriever>
 {
@@ -56,6 +58,30 @@ auto main() -> int
 			std::cout << "\t\tHits: " << trace.hits << '\n';
 			std::cout << "\t\tMisses: " << trace.misses << "\n\n";
 		}
+	}
+
+	const auto iterative = std::make_unique<fifo_iterative_replacement_algorithm>(4);
+
+	const auto iterative_results = run_iterative_replacement_algorithm(*iterative, all_inputs.back());
+
+	std::cout << "Iterative results\n";
+	std::cout << "\tTotal Hits: " << std::accumulate(iterative_results.cbegin(), iterative_results.cend(), 0,
+	                                                 [](const auto& left, const auto& right)
+	                                                 {
+		                                                 return left + int{right.is_hit};
+	                                                 }) << "\n";
+
+	std::cout << "\tPage Table Trace:\n";
+	for (auto&& result : iterative_results)
+	{
+		std::cout << "\t\tPages: ";
+
+		for (auto&& page : result.page_table)
+		{
+			std::cout << page << ' ';
+		}
+
+		std::cout << '\n';
 	}
 
 	std::cout << "Enter anything to exit...\n";

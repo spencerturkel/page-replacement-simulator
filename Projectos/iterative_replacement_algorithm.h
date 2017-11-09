@@ -19,6 +19,8 @@ namespace
 	struct iterative_replacement_algorithm
 	{
 		using derived_state = state<Derived>;
+		using input = std::vector<int>;
+		using input_const_iter = input::const_iterator;
 
 		struct run_result
 		{
@@ -26,43 +28,39 @@ namespace
 			result result;
 		};
 
+		const std::string name;
+		const int page_table_size;
+
+		iterative_replacement_algorithm(std::string name, const int page_table_size);
+
 		virtual auto make_initial_state() const -> std::unique_ptr<derived_state> = 0;
-		virtual auto run(const derived_state& current_state, const std::vector<int>& all_input,
-		                 const std::vector<int>::const_iterator& current_index) const -> run_result = 0;
+		virtual auto run(const derived_state& current_state, const input& all_input, const input_const_iter& current_input) const -> run_result = 0;
 
 		virtual ~iterative_replacement_algorithm() = default;
 	};
 
-	struct specialized : iterative_replacement_algorithm<specialized>
+	template <typename Derived>
+	iterative_replacement_algorithm<Derived>::iterative_replacement_algorithm(std::string name, const int page_table_size)
+		: name(std::move(name)),
+		  page_table_size(page_table_size)
 	{
-		auto run(const derived_state& current_state, const std::vector<int>& all_input,
-		         const std::vector<int>::const_iterator& current_index) const -> run_result override = 0;
-	};
-
-	template<>
-	struct state<specialized>
-	{
-		int a;
-	};
-
-	auto run_specialized(specialized* algorithm,
-	                     const std::vector<int>& all_input) -> std::vector<result>;
-}
-
-template <typename Derived>
-auto run_iterative_replacement_algorithm(const iterative_replacement_algorithm<Derived>& algorithm,
-                                                const std::vector<int>& all_input) -> std::vector<result>
-{
-	auto results = std::vector<result>{};
-	auto state = algorithm.make_initial_state();
-	using std::move;
-
-	for (auto index = all_input.cbegin(); index != all_input.cend(); ++index)
-	{
-		auto step = algorithm.run(*state, all_input, index);
-		state = move(step.next_state);
-		results.push_back(move(step.result));
 	}
 
-	return results;
+	template <typename Derived>
+	auto run_iterative_replacement_algorithm(const iterative_replacement_algorithm<Derived>& algorithm,
+	                                         const std::vector<int>& all_input) -> std::vector<result>
+	{
+		auto results = std::vector<result>{};
+		auto state = algorithm.make_initial_state();
+		using std::move;
+
+		for (auto index = all_input.cbegin(); index != all_input.cend(); ++index)
+		{
+			auto step = algorithm.run(*state, all_input, index);
+			state = move(step.next_state);
+			results.push_back(move(step.result));
+		}
+
+		return results;
+	}
 }

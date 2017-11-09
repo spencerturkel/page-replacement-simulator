@@ -111,6 +111,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="fifo_iterative_replacement_algorithm.cpp" />
     <ClCompile Include="first_in_first_out.cpp" />
     <ClCompile Include="input_file_retriever.cpp" />
     <ClCompile Include="iterative_replacement_algorithm.cpp" />
@@ -122,6 +123,7 @@
     <ClCompile Include="replacement_algorithm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="fifo_iterative_replacement_algorithm.h" />
     <ClInclude Include="first_in_first_out.h" />
     <ClInclude Include="file_input_retriever.h" />
     <ClInclude Include="input_retriever.h" />
