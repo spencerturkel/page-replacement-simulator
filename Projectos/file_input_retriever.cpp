@@ -11,7 +11,12 @@ file_input_retriever::file_input_retriever(std::string file_name): file_name(std
 auto file_input_retriever::retrieve() const -> std::vector<std::vector<int>>
 {
 	auto result = std::vector<std::vector<int>>{};
-	auto input_stream = std::ifstream{"inputfile", std::ios_base::binary};
+	auto input_stream = std::ifstream{file_name, std::ios_base::binary};
+
+	if (!input_stream)
+	{
+		throw std::runtime_error("File " + file_name + " not found");
+	}
 
 	auto line = std::string{};
 
