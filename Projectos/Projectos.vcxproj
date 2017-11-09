@@ -131,6 +131,7 @@
     <ClInclude Include="least_recently_used.h" />
     <ClInclude Include="most_frequently_used.h" />
     <ClInclude Include="optimal.h" />
+    <ClInclude Include="optimal_iterative_replacement_algorithm.h" />
     <ClInclude Include="replacement_algorithm.h" />
     <ClInclude Include="step_result.h" />
   </ItemGroup>

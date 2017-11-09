@@ -7,8 +7,6 @@
 
 namespace
 {
-	struct fifo_iterative_replacement_algorithm;
-
 	struct fifo_iterative_replacement_algorithm_state
 	{
 		using queue = std::deque<int>;

@@ -6,6 +6,7 @@
 #include "file_input_retriever.h"
 #include "iterative_replacement_algorithm.h"
 #include "fifo_iterative_replacement_algorithm.h"
+#include "optimal_iterative_replacement_algorithm.h"
 
 template <typename Algorithm>
 auto report_iterative_algorithm(const int& page_table_size, std::vector<int> trace, bool print_steps) -> void
@@ -66,9 +67,8 @@ auto main() -> int
 
 	for (auto&& input : all_inputs)
 	{
-		report_iterative_algorithm<fifo_iterative_replacement_algorithm>(3, input, false);
-		report_iterative_algorithm<fifo_iterative_replacement_algorithm>(6, input, false);
-		report_iterative_algorithm<fifo_iterative_replacement_algorithm>(9, input, false);
+		report_iterative_algorithm<fifo_iterative_replacement_algorithm>(4, input, false);
+		report_iterative_algorithm<optimal_iterative_replacement_algorithm>(4, input, true);
 	}
 
 	std::cout << "Enter anything to exit...\n";
