@@ -65,6 +65,9 @@
     <ClInclude Include="lfu_iterative_replacement_algorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="lru_iterative_replacement_algorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="trace_result.h">
