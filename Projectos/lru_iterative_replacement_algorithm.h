@@ -32,20 +32,8 @@ namespace
 
 		if (!is_hit)
 		{
-			if (current_state.size() < page_table_size)
+			if (current_state.size() == page_table_size)
 			{
-				table.insert(*current_input);
-			}
-			else
-			{
-				//				auto least_recently_used = all_input.rbegin();
-				//
-				//				for (auto it = table.cbegin(); it != table.cend(); ++it)
-				//				{
-				//					const auto last_use = std::find(std::make_reverse_iterator(current_input), all_input.crend(), *it);
-				//
-				//					least_recently_used = std::min(last_use, least_recently_used);
-				//				}
 				const auto least_recently_used = std::accumulate(table.cbegin(), table.cend(),
 				                                                 std::make_reverse_iterator(current_input),
 				                                                 [&](const auto& least, const auto& page)
@@ -53,13 +41,16 @@ namespace
 					                                                 const auto last_use = std::find(
 						                                                 std::make_reverse_iterator(current_input), all_input.crend(),
 						                                                 page);
-					                                                 return std::min(least, last_use);
+					                                                 return std::max(least, last_use);
 				                                                 });
 				table.erase(*least_recently_used);
 			}
+
+			table.insert(*current_input);
 		}
 
-		return {std::make_unique<state>(std::move(table)), {is_hit, {table.cbegin(), table.cend()}}};
+		const auto vector = std::vector<int>{table.cbegin(), table.cend()};
+		return {std::make_unique<state>(std::move(table)), {is_hit, vector}};
 	}
 
 	lru_iterative_replacement_algorithm::
