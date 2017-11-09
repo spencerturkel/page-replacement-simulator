@@ -1,7 +1,6 @@
 ﻿#pragma once
-#include <string>
-#include <vector>
 #include <memory>
+#include <vector>
 
 namespace
 {
@@ -51,10 +50,19 @@ namespace
 }
 
 template <typename Derived>
-inline auto run_iterative_replacement_algorithm(const iterative_replacement_algorithm<Derived>& algorithm,
+auto run_iterative_replacement_algorithm(const iterative_replacement_algorithm<Derived>& algorithm,
                                                 const std::vector<int>& all_input) -> std::vector<result>
 {
 	auto results = std::vector<result>{};
-	auto initial_state = algorithm.make_initial_state();
+	auto state = algorithm.make_initial_state();
+	using std::move;
+
+	for (auto index = all_input.cbegin(); index != all_input.cend(); ++index)
+	{
+		auto step = algorithm.run(*state, all_input, index);
+		state = move(step.next_state);
+		results.push_back(move(step.result));
+	}
+
 	return results;
 }
