@@ -3,14 +3,18 @@
 #include <vector>
 
 #include "step_result.h"
-#include "iterative_replacement_algorithm_base.h"
 
 namespace
 {
 	template <typename State>
-	struct iterative_replacement_algorithm : iterative_replacement_algorithm_base
+	struct iterative_replacement_algorithm
 	{
 		using state = State;
+		using input = std::vector<int>;
+		using input_const_iter = input::const_iterator;
+
+		const std::string name;
+		const int page_table_size;
 
 		struct run_step_result
 		{
@@ -29,7 +33,7 @@ namespace
 
 	template <typename State>
 	iterative_replacement_algorithm<State>::iterative_replacement_algorithm(std::string name, const int page_table_size)
-		: iterative_replacement_algorithm_base(std::move(name), std::move(page_table_size))
+		: name(std::move(name)), page_table_size(std::move(page_table_size))
 	{
 	}
 

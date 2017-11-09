@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-#include <cassert>
 #include <deque>
 
 #include "iterative_replacement_algorithm.h"
@@ -17,7 +16,6 @@ namespace
 
 		explicit fifo_iterative_replacement_algorithm_state(const int page_table_size) : page_table(page_table_size, -1)
 		{
-			assert(page_table_size >= 0);
 		}
 
 		explicit fifo_iterative_replacement_algorithm_state(const queue page_table) : page_table(page_table)
