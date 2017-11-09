@@ -21,16 +21,10 @@
     <ClCompile Include="input_file_retriever.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="most_frequently_used.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="replacement_algorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="least_recently_used.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="least_frequently_used.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="iterative_replacement_algorithm.cpp">
@@ -47,13 +41,7 @@
     <ClInclude Include="file_input_retriever.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="most_frequently_used.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="least_recently_used.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="least_frequently_used.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="iterative_replacement_algorithm.h">
