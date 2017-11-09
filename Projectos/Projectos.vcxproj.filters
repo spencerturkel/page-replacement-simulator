@@ -21,16 +21,10 @@
     <ClCompile Include="input_file_retriever.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="first_in_first_out.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="most_frequently_used.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="replacement_algorithm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="optimal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="least_recently_used.cpp">
@@ -50,16 +44,10 @@
     <ClInclude Include="replacement_algorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="first_in_first_out.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="file_input_retriever.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="most_frequently_used.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="optimal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="least_recently_used.h">

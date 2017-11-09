@@ -9,7 +9,7 @@
 #include "optimal_iterative_replacement_algorithm.h"
 
 template <typename Algorithm>
-auto report_iterative_algorithm(const int& page_table_size, std::vector<int> trace, bool print_steps) -> void
+auto report_iterative_algorithm(const int& page_table_size, std::vector<int> trace, const bool print_steps) -> void
 {
 	const auto algorithm = Algorithm{page_table_size};
 	const auto iterative_results = run_iterative_replacement_algorithm(algorithm, trace);
