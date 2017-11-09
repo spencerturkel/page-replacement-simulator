@@ -112,7 +112,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="input_file_retriever.cpp" />
+    <ClCompile Include="file_input_retriever.cpp" />
     <ClCompile Include="iterative_replacement_algorithm.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

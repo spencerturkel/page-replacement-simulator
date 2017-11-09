@@ -61,26 +61,25 @@ auto report_iterative_algorithm(const int& page_table_size, std::vector<int> tra
 	}
 }
 
-auto make_retriever() -> std::unique_ptr<input_retriever>
-{
-	return std::make_unique<file_input_retriever>();
-}
-
 auto make_options(int& argc, char**& argv) -> cxxopts::Options
 {
 	using namespace cxxopts;
 
-	auto options = Options{"PageReplacementSimulator", "OS Group Project"};
+	auto options = Options{
+		"PageReplacementSimulator", "Group Project for COP4600 simulating page replacement algorithms"
+	};
 
 	options.add_options()
 		("f,file", "An input file, where each line is formatted as specified in the --input option", value<std::string>())
-		("input", "A space-seperated string of positive integers representing a memory trace", value<std::vector<int>>())
+		("i,input", "A space-seperated string of positive integers representing a memory trace", value<std::vector<int>>())
 		("p,pages", "Number of pages in simulated page table", value<int>()->default_value("4"))
-		("s,show-steps", "Show each state of the page table when running an algorithm")
-		("a,alg,algorithm", "Choose the algorithm to run. Must be one of 'all', 'fifo', 'lfu', 'lru', 'mfu', or 'opt'",
+		("s,steps", "Show each state of the page table when running an algorithm",
+		 value<bool>()->default_value("false")->implicit_value("true"))
+		("a,algorithm", "Choose the algorithm to run. Must be one of 'all', 'fifo', 'lfu', 'lru', 'mfu', or 'opt'",
 		 value<std::string>()->default_value("all"));
 
 	options.parse_positional("input");
+	options.help();
 
 	options.parse(argc, argv);
 	return options;
@@ -88,11 +87,16 @@ auto make_options(int& argc, char**& argv) -> cxxopts::Options
 
 auto main(int argc, char** argv) -> int
 {
-	const auto options_parser = make_options(argc, argv);
-	const auto all_inputs = make_retriever()->retrieve();
-	const auto alg = options_parser["alg"].as<std::string>();
-	const auto pages = options_parser["pages"].as<int>();
-	const auto show_steps = options_parser["show-steps"].as<bool>();
+	const auto options = make_options(argc, argv);
+	const auto alg = options["algorithm"].as<std::string>();
+	const auto pages = options["pages"].as<int>();
+	const auto show_steps = options["steps"].as<bool>();
+
+	const auto all_inputs = options["file"].count() > 0 || options["input"].count() == 0
+		                        ? file_input_retriever{
+			                        options["file"].as<std::string>()
+		                        }.retrieve()
+		                        : std::vector<std::vector<int>>{options["input"].as<std::vector<int>>()};
 
 	for (auto&& input : all_inputs)
 	{

@@ -4,6 +4,10 @@
 
 #include "file_input_retriever.h"
 
+file_input_retriever::file_input_retriever(std::string file_name): file_name(std::move(file_name))
+{
+}
+
 auto file_input_retriever::retrieve() const -> std::vector<std::vector<int>>
 {
 	auto result = std::vector<std::vector<int>>{};
