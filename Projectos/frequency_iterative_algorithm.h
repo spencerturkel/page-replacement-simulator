@@ -44,7 +44,7 @@ namespace
 		auto run_step(const state& current_state, const input& all_input,
 		              const input_const_iter& current_input) const -> run_step_result override;
 
-		explicit frequency_iterative_replacement_algorithm(int page_table_size, comparator compare);
+		explicit frequency_iterative_replacement_algorithm(std::string name, int page_table_size, comparator compare);
 	};
 
 	auto frequency_iterative_replacement_algorithm::make_initial_state() const -> std::unique_ptr<state>
@@ -53,42 +53,42 @@ namespace
 	}
 
 	auto frequency_iterative_replacement_algorithm::run_step(const state& current_state, const input& all_input,
-	                                                   const input_const_iter& current_input) const -> run_step_result
+	                                                         const input_const_iter& current_input) const ->
+	run_step_result
 	{
 		auto table = current_state.table;
-		auto is_hit = bool{};
 
-		const auto empty_entry = std::find_if(table.begin(), table.end(), page_invalid);
-
-		if (empty_entry != table.cend())
+		const auto found_page = std::find_if(table.begin(), table.end(), [&](const auto& page) -> auto
 		{
-			*empty_entry = {*current_input, 1};
+			return page.number == *current_input;
+		});
 
-			if (std::none_of(table.cbegin(), table.cend(), page_invalid))
-			{
-				std::make_heap(table.begin(), table.end());
-			}
+		const auto is_hit = found_page != table.cend();
+
+		if (is_hit)
+		{
+			found_page->used++;
+			std::make_heap(table.begin(), table.end(), compare);
 		}
 		else
 		{
-			const auto found_page = std::find_if(table.begin(), table.end(), [&](const auto& page) -> auto
-			{
-				return page.number == *current_input;
-			});
+			const auto empty_entry = std::find_if(table.begin(), table.end(), page_invalid);
 
-			is_hit = found_page != table.cend();
-
-			if (is_hit)
+			if (empty_entry != table.cend())
 			{
-				found_page->used++;
-				std::make_heap(table.begin(), table.end());
+				*empty_entry = {*current_input, 1};
+
+				if (std::none_of(table.cbegin(), table.cend(), page_invalid))
+				{
+					std::make_heap(table.begin(), table.end(), compare);
+				}
 			}
 			else
 			{
-				std::pop_heap(table.begin(), table.end());
+				std::pop_heap(table.begin(), table.end(), compare);
 				table.pop_back();
 				table.push_back({*current_input, 1});
-				std::push_heap(table.begin(), table.end());
+				std::push_heap(table.begin(), table.end(), compare);
 			}
 		}
 
@@ -103,8 +103,9 @@ namespace
 	}
 
 	frequency_iterative_replacement_algorithm::
-	frequency_iterative_replacement_algorithm(const int page_table_size, const comparator compare): iterative_replacement_algorithm(
-		"Most Frequently Used", page_table_size), compare(std::move(compare))
+	frequency_iterative_replacement_algorithm(std::string name, const int page_table_size, const comparator compare):
+		iterative_replacement_algorithm(
+			std::move(name), page_table_size), compare(std::move(compare))
 	{
 	}
 }
