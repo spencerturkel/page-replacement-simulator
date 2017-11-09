@@ -10,15 +10,10 @@ namespace
 		std::vector<int> page_table;
 	};
 
-	template <typename Derived>
-	struct state
-	{
-	};
-
-	template <typename Derived>
+	template <typename State>
 	struct iterative_replacement_algorithm
 	{
-		using derived_state = state<Derived>;
+		using derived_state = State;
 		using input = std::vector<int>;
 		using input_const_iter = input::const_iterator;
 
@@ -39,8 +34,8 @@ namespace
 		virtual ~iterative_replacement_algorithm() = default;
 	};
 
-	template <typename Derived>
-	iterative_replacement_algorithm<Derived>::iterative_replacement_algorithm(std::string name, const int page_table_size)
+	template <typename State>
+	iterative_replacement_algorithm<State>::iterative_replacement_algorithm(std::string name, const int page_table_size)
 		: name(std::move(name)),
 		  page_table_size(page_table_size)
 	{

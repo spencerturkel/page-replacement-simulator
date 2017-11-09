@@ -10,23 +10,23 @@ namespace
 {
 	struct fifo_iterative_replacement_algorithm;
 
-	template <>
-	struct state<fifo_iterative_replacement_algorithm>
+	struct fifo_iterative_replacement_algorithm_state
 	{
 		using queue = std::deque<int>;
 		queue page_table;
 
-		explicit state(const int page_table_size) : page_table(page_table_size, -1)
+		explicit fifo_iterative_replacement_algorithm_state(const int page_table_size) : page_table(page_table_size, -1)
 		{
 			assert(page_table_size >= 0);
 		}
 
-		explicit state(const queue page_table) : page_table(page_table)
+		explicit fifo_iterative_replacement_algorithm_state(const queue page_table) : page_table(page_table)
 		{
 		}
 	};
 
-	struct fifo_iterative_replacement_algorithm : iterative_replacement_algorithm<fifo_iterative_replacement_algorithm>
+	struct fifo_iterative_replacement_algorithm : iterative_replacement_algorithm<
+			fifo_iterative_replacement_algorithm_state>
 	{
 		explicit fifo_iterative_replacement_algorithm(const int page_table_size);
 
@@ -60,7 +60,7 @@ auto fifo_iterative_replacement_algorithm::run(const derived_state& current_stat
 }
 
 fifo_iterative_replacement_algorithm::fifo_iterative_replacement_algorithm(const int page_table_size):
-	iterative_replacement_algorithm<fifo_iterative_replacement_algorithm>("First In First Out (Iterative)",
-	                                                                      page_table_size)
+	iterative_replacement_algorithm<fifo_iterative_replacement_algorithm_state>("First In First Out (Iterative)",
+	                                                                            page_table_size)
 {
 }
