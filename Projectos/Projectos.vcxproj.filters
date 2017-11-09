@@ -58,7 +58,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="inputfile">
+    <None Include="PageFile">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

@@ -69,7 +69,7 @@ auto make_options(char* name) -> cxxopts::Options
 	auto options = Options{name};
 
 	options.add_options()
-		("f,file", "An input file, where each line is formatted as specified in the --input option", value<string>())
+		("f,file", "An input file, where each line is formatted as specified in the --input option", value<string>()->default_value("PageFile"))
 		("h,help", "Print help")
 		("i,input", "A space-seperated string of positive integers representing a memory trace", value<std::vector<int>>())
 		("p,pages", "Number of pages in simulated page table", value<int>()->default_value("4"))
@@ -123,6 +123,17 @@ auto run_from_options(const cxxopts::Options& options) -> void
 	}
 }
 
+auto on_exit(const int result) -> int
+{
+#ifdef _DEBUG
+	std::cout << "Enter anything to exit...\n";
+
+	std::cin.get();
+#endif
+
+	return result;
+};
+
 auto main(int argc, char** argv) -> int
 {
 	auto options = make_options(argv[0]);
@@ -134,7 +145,7 @@ auto main(int argc, char** argv) -> int
 		if (options.count("help"))
 		{
 			std::cout << options.help();
-			return 0;
+			return on_exit(0);
 		}
 
 		run_from_options(options);
@@ -143,15 +154,13 @@ auto main(int argc, char** argv) -> int
 	{
 		std::cerr << exception.what() << "\n";
 		std::cout << options.help() << "\n";
-		return 1;
+		return on_exit(1);
 	}
 	catch (std::runtime_error error)
 	{
 		std::cerr << error.what() << "\n";
-		return 1;
+		return on_exit(1);
 	}
 
-	std::cout << "Enter anything to exit...\n";
-
-	std::cin.get();
+	return on_exit(0);
 }
