@@ -33,25 +33,8 @@ auto make_algorithms() -> std::vector<std::unique_ptr<replacement_algorithm>>
 	return algorithms;
 }
 
-auto run_fifo(const fifo_iterative_replacement_algorithm& algorithm,
-              const std::vector<int>& all_input) -> std::vector<result>
-{
-	auto results = std::vector<result>{};
-	auto state = algorithm.make_initial_state();
-	using std::move;
-
-	for (auto index = all_input.cbegin(); index != all_input.cend(); ++index)
-	{
-		auto step = algorithm.run(*state, all_input, index);
-		state = move(step.next_state);
-		results.push_back(move(step.result));
-	}
-
-	return results;
-}
-
-template <typename Derived>
-auto run_iterative_replacement_algorithm(const iterative_replacement_algorithm<Derived>& algorithm,
+template <typename State>
+auto run_iterative_replacement_algorithm(const iterative_replacement_algorithm<State>& algorithm,
                                          const std::vector<int>& all_input) -> std::vector<result>
 {
 	auto results = std::vector<result>{};
@@ -100,7 +83,7 @@ auto main() -> int
 
 	const auto iter = fifo_iterative_replacement_algorithm{4};
 	const auto& iterative_input = all_inputs.back();
-	const auto iterative_results = run_fifo(iter, iterative_input);
+	const auto iterative_results = run_iterative_replacement_algorithm(iter, iterative_input);
 
 
 	std::cout << "Algorithm: " << iter.name << "\n";
