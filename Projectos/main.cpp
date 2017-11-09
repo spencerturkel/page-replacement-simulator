@@ -34,7 +34,7 @@ auto make_algorithms() -> std::vector<std::unique_ptr<replacement_algorithm>>
 }
 
 auto run_fifo(const fifo_iterative_replacement_algorithm& algorithm,
-                                         const std::vector<int>& all_input) -> std::vector<result>
+              const std::vector<int>& all_input) -> std::vector<result>
 {
 	auto results = std::vector<result>{};
 	auto state = algorithm.make_initial_state();
@@ -99,20 +99,36 @@ auto main() -> int
 	//	const auto iterative_results = run_iterative_replacement_algorithm(*iterative, all_inputs.back());
 
 	const auto iter = fifo_iterative_replacement_algorithm{4};
-	const auto iterative_results = run_fifo(iter, all_inputs.back());
+	const auto& iterative_input = all_inputs.back();
+	const auto iterative_results = run_fifo(iter, iterative_input);
 
 
-	std::cout << "Iterative results\n";
-	std::cout << "\tTotal Hits: " << std::accumulate(iterative_results.cbegin(), iterative_results.cend(), 0,
-	                                                 [](const auto& left, const auto& right)
-	                                                 {
-		                                                 return left + int{right.is_hit};
-	                                                 }) << "\n";
+	std::cout << "Algorithm: " << iter.name << "\n";
+
+	std::cout << "\tInput: ";
+
+	for (auto&& input : iterative_input)
+	{
+		std::cout << input << ' ';
+	}
+
+	std::cout << "\n\tTotal Hits: " << std::accumulate(iterative_results.cbegin(), iterative_results.cend(), 0,
+	                                                   [](const auto& left, const auto& right)
+	                                                   {
+		                                                   return left + int{right.is_hit};
+	                                                   }) << "\n";
 
 	std::cout << "\tPage Table Trace:\n";
-	for (auto&& result : iterative_results)
+	for (auto result_index = 0u; result_index < iterative_results.size(); ++result_index)
 	{
-		std::cout << "\t\tPages: ";
+		const auto& result = iterative_results[result_index];
+
+		std::cout << "\t\tStep " << result_index << '\n';
+
+		std::cout << "\t\t\tInput: " << iterative_input[result_index] << '\n';
+		std::cout << "\t\t\t" << (result.is_hit ? "Hit" : "Miss") << '\n';
+
+		std::cout << "\t\t\tPages: ";
 
 		for (auto&& page : result.page_table)
 		{
