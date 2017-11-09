@@ -31,8 +31,8 @@ namespace
 		explicit fifo_iterative_replacement_algorithm(const int page_table_size);
 
 		auto make_initial_state() const -> std::unique_ptr<state> override;
-		auto run(const state& current_state, const input& all_input,
-		         const input_const_iter& current_input) const -> run_result override;
+		auto run_step(const state& current_state, const input& all_input,
+		         const input_const_iter& current_input) const -> run_step_result override;
 	};
 }
 
@@ -41,9 +41,9 @@ auto fifo_iterative_replacement_algorithm::make_initial_state() const -> std::un
 	return std::make_unique<state>(page_table_size);
 }
 
-auto fifo_iterative_replacement_algorithm::run(const state& current_state,
+auto fifo_iterative_replacement_algorithm::run_step(const state& current_state,
                                                const input& all_input,
-                                               const input_const_iter& current_input) const -> run_result
+                                               const input_const_iter& current_input) const -> run_step_result
 {
 	auto page_table = current_state.page_table;
 	const auto is_hit = std::find(page_table.cbegin(), page_table.cend(), *current_input) != page_table.cend();

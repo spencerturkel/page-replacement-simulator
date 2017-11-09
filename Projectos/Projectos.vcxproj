@@ -115,6 +115,7 @@
     <ClCompile Include="first_in_first_out.cpp" />
     <ClCompile Include="input_file_retriever.cpp" />
     <ClCompile Include="iterative_replacement_algorithm.cpp" />
+    <ClCompile Include="iterative_replacement_algorithm_base.cpp" />
     <ClCompile Include="least_frequently_used.cpp" />
     <ClCompile Include="least_recently_used.cpp" />
     <ClCompile Include="main.cpp" />
@@ -128,11 +129,13 @@
     <ClInclude Include="file_input_retriever.h" />
     <ClInclude Include="input_retriever.h" />
     <ClInclude Include="iterative_replacement_algorithm.h" />
+    <ClInclude Include="iterative_replacement_algorithm_base.h" />
     <ClInclude Include="least_frequently_used.h" />
     <ClInclude Include="least_recently_used.h" />
     <ClInclude Include="most_frequently_used.h" />
     <ClInclude Include="optimal.h" />
     <ClInclude Include="replacement_algorithm.h" />
+    <ClInclude Include="step_result.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="inputfile" />
