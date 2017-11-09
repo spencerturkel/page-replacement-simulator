@@ -4,6 +4,7 @@
 
 #include "file_input_retriever.h"
 #include "first_in_first_out.h"
+#include "iterative_replacement_algorithm.h"
 #include "optimal.h"
 #include "most_frequently_used.h"
 #include "replacement_algorithm.h"
