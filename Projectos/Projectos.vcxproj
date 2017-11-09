@@ -122,6 +122,7 @@
   <ItemGroup>
     <ClInclude Include="fifo_iterative_replacement_algorithm.h" />
     <ClInclude Include="file_input_retriever.h" />
+    <ClInclude Include="frequency_iterative_algorithm.h" />
     <ClInclude Include="input_retriever.h" />
     <ClInclude Include="iterative_replacement_algorithm.h" />
     <ClInclude Include="least_frequently_used.h" />
