@@ -68,16 +68,56 @@ auto make_options(char* name) -> cxxopts::Options
 
 	auto options = Options{name};
 
+	options.positional_help("{space seperated positive integer page references}");
+	options.parse_positional("input");
+
 	options.add_options()
-		("f,file", "An input file, where each line is formatted as specified in the --input option", value<string>()->default_value("PageFile"))
+		("f,file", "An input file, where each line has space seperated positive integer page references",
+		 value<string>()->default_value("PageFile"))
+		("i,input", "Space seperated positive integer page references", cxxopts::value<std::vector<string>>())
 		("h,help", "Print help")
-		("i,input", "A space-seperated string of positive integers representing a memory trace", value<std::vector<int>>())
 		("p,pages", "Number of pages in simulated page table", value<int>()->default_value("4"))
-		("s,steps", "Show each state of the page table when running an algorithm", value<string>()->implicit_value("true"))
+		("s,steps", "Show each state of the page table when running an algorithm")
 		("a,algorithm", "Choose the algorithm to run. Must be one of 'all', 'fifo', 'lfu', 'lru', 'mfu', or 'opt'",
 		 value<string>()->default_value("all"));
 
 	return options;
+}
+
+auto parse_input(const std::vector<std::string>& input) -> std::vector<int>
+{
+	//	std::cout << "Input was: " << input << "\n";
+	//	auto ss = std::stringstream{input};
+	//	auto next = int{};
+	//	auto result = std::vector<int>{};
+	//
+	//	while (ss >> next)
+	//	{
+	//		if (next < 0)
+	//		{
+	//			throw std::runtime_error{"Input page numbers must not be negative"};
+	//		}
+	//
+	//		result.push_back(next);
+	//	}
+
+	//	return result;
+
+	auto result = std::vector<int>(input.size());
+
+	std::transform(input.cbegin(), input.cend(), result.begin(), [](const std::string& str)
+	{
+		try
+		{
+			return std::stoi(str);
+		}
+		catch(std::exception)
+		{
+			throw std::runtime_error{ "Could not convert '" + str + "' to a page reference number" };
+		}
+	});
+
+	return result;
 }
 
 auto run_from_options(const cxxopts::Options& options) -> void
@@ -92,7 +132,8 @@ auto run_from_options(const cxxopts::Options& options) -> void
 		                        ? file_input_retriever{
 			                        options["file"].as<std::string>()
 		                        }.retrieve()
-		                        : std::vector<std::vector<int>>{options["input"].as<std::vector<int>>()};
+		                        //		                        : std::vector<std::vector<int>>{parse_input(options["input"].as<string>())};
+		                        : std::vector<std::vector<int>>{parse_input(options["input"].as<std::vector<string>>())};
 
 	for (auto&& input : all_inputs)
 	{
@@ -159,6 +200,7 @@ auto main(int argc, char** argv) -> int
 	catch (std::runtime_error error)
 	{
 		std::cerr << error.what() << "\n";
+		std::cout << options.help() << "\n";
 		return on_exit(1);
 	}
 
