@@ -14,20 +14,20 @@ add_library(cxxopts INTERFACE)
 add_dependencies(cxxopts cxxopts_external)
 target_include_directories(cxxopts INTERFACE ${SOURCE_DIR}/include)
 
-add_executable(page-replacement-simulator 
-        file_input_retriever.cpp
-        iterative_replacement_algorithm.cpp
-        main.cpp
-        fifo_iterative_replacement_algorithm.h
-        file_input_retriever.h
-        frequency_iterative_algorithm.h
-        input_retriever.h
-        iterative_replacement_algorithm.h
-        lfu_iterative_replacement_algorithm.h
-        lru_iterative_replacement_algorithm.h
-        mfu_iterative_replacement_algorithm.h
-        optimal_iterative_replacement_algorithm.h
-        step_result.h
+add_executable(page-replacement-simulator
+        Projectos/file_input_retriever.cpp
+        Projectos/iterative_replacement_algorithm.cpp
+        Projectos/main.cpp
+        Projectos/fifo_iterative_replacement_algorithm.h
+        Projectos/file_input_retriever.h
+        Projectos/frequency_iterative_algorithm.h
+        Projectos/input_retriever.h
+        Projectos/iterative_replacement_algorithm.h
+        Projectos/lfu_iterative_replacement_algorithm.h
+        Projectos/lru_iterative_replacement_algorithm.h
+        Projectos/mfu_iterative_replacement_algorithm.h
+        Projectos/optimal_iterative_replacement_algorithm.h
+        Projectos/step_result.h
         )
 target_link_libraries(page-replacement-simulator PRIVATE cxxopts)
 set_target_properties(page-replacement-simulator PROPERTIES 
