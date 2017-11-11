@@ -5,13 +5,13 @@
 
 #include <cxxopts.hpp>
 
-#include "file_input_retriever.h"
-#include "iterative_replacement_algorithm.h"
-#include "fifo_iterative_replacement_algorithm.h"
-#include "lfu_iterative_replacement_algorithm.h"
-#include "lru_iterative_replacement_algorithm.h"
-#include "mfu_iterative_replacement_algorithm.h"
-#include "optimal_iterative_replacement_algorithm.h"
+#include "../include/file_input_retriever.h"
+#include "../include/iterative_replacement_algorithm.h"
+#include "../include/fifo_iterative_replacement_algorithm.h"
+#include "../include/lfu_iterative_replacement_algorithm.h"
+#include "../include/lru_iterative_replacement_algorithm.h"
+#include "../include/mfu_iterative_replacement_algorithm.h"
+#include "../include/optimal_iterative_replacement_algorithm.h"
 
 template <typename Algorithm>
 auto report_iterative_algorithm(const int& page_table_size, std::vector<int> trace, const bool print_steps) -> void
