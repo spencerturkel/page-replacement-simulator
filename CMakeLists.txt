@@ -24,6 +24,7 @@ add_executable(page-replacement-simulator
         src/lfu_iterative_replacement_algorithm.cpp
         src/lru_iterative_replacement_algorithm.cpp
         src/mfu_iterative_replacement_algorithm.cpp
+        src/optimal_iterative_replacement_algorithm.cpp
         src/main.cpp
         include/fifo_iterative_replacement_algorithm.h
         include/file_input_retriever.h
