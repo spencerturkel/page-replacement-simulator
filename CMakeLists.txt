@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 project(page-replacement-simulator LANGUAGES CXX)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 include(ExternalProject)
 
 externalproject_add(cxxopts_external
@@ -18,6 +20,7 @@ add_executable(page-replacement-simulator
         src/file_input_retriever.cpp
         src/iterative_replacement_algorithm.cpp
         src/main.cpp
+        src/fifo_iterative_replacement_algorithm.cpp
         include/fifo_iterative_replacement_algorithm.h
         include/file_input_retriever.h
         include/frequency_iterative_algorithm.h
@@ -37,4 +40,8 @@ set_target_properties(page-replacement-simulator PROPERTIES
 target_compile_options(page-replacement-simulator PRIVATE
         $<$<AND:$<CXX_COMPILER_ID:GNU>,$<CONFIG:Debug>>:-Wall -Wextra -g>
         $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Debug>>:/W3>
+        )
+
+add_custom_command(TARGET page-replacement-simulator PRE_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/compile_commands.json ${PROJECT_SOURCE_DIR}
         )

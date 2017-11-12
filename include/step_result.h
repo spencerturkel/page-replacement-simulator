@@ -2,11 +2,8 @@
 
 #include <vector>
 
-namespace
+struct step_result
 {
-	struct step_result
-	{
-		bool is_hit;
-		std::vector<int> page_table;
-	};
-}
+	bool is_hit;
+	std::vector<int> page_table;
+};
