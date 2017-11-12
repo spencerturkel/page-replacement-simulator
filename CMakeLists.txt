@@ -17,10 +17,11 @@ add_dependencies(cxxopts cxxopts_external)
 target_include_directories(cxxopts INTERFACE ${SOURCE_DIR}/include)
 
 add_executable(page-replacement-simulator
+        src/frequency_iterative_algorithm.cpp
+        src/fifo_iterative_replacement_algorithm.cpp
         src/file_input_retriever.cpp
         src/iterative_replacement_algorithm.cpp
         src/main.cpp
-        src/fifo_iterative_replacement_algorithm.cpp
         include/fifo_iterative_replacement_algorithm.h
         include/file_input_retriever.h
         include/frequency_iterative_algorithm.h
