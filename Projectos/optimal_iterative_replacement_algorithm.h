@@ -40,7 +40,7 @@ namespace
 
 	optimal_iterative_replacement_algorithm::optimal_iterative_replacement_algorithm(const int page_table_size)
 		: iterative_replacement_algorithm<optimal_iterative_replacement_algorithm_state>(
-			"Optimal (Iterative)", page_table_size)
+			"Optimal", page_table_size)
 	{
 	}
 

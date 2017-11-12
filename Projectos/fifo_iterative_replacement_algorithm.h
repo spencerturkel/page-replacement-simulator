@@ -56,7 +56,7 @@ auto fifo_iterative_replacement_algorithm::run_step(const state& current_state,
 }
 
 fifo_iterative_replacement_algorithm::fifo_iterative_replacement_algorithm(const int page_table_size):
-	iterative_replacement_algorithm<fifo_iterative_replacement_algorithm_state>("First In First Out (Iterative)",
+	iterative_replacement_algorithm<fifo_iterative_replacement_algorithm_state>("First In First Out",
 	                                                                            page_table_size)
 {
 }
