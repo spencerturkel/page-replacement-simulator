@@ -47,6 +47,8 @@ target_compile_options(page-replacement-simulator PRIVATE
         $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Debug>>:/W3>
         )
 
-add_custom_command(TARGET page-replacement-simulator PRE_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/compile_commands.json ${PROJECT_SOURCE_DIR}
-        )
+if (UNIX)
+        add_custom_command(TARGET page-replacement-simulator PRE_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/compile_commands.json ${PROJECT_SOURCE_DIR}
+                )
+endif(UNIX)

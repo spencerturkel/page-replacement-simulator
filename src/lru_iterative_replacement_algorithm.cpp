@@ -1,4 +1,6 @@
-﻿#include "../include/lru_iterative_replacement_algorithm.h"
+﻿#include <numeric>
+
+#include "../include/lru_iterative_replacement_algorithm.h"
 
 auto lru_iterative_replacement_algorithm::make_initial_state() const -> std::unique_ptr<state>
 {
