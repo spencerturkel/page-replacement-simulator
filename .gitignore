@@ -6,7 +6,7 @@
 !*.md
 
 !include
-!include/**/*
+!include/**/*.h
 
 !src
-!src/**/*
+!src/**/*.cpp
