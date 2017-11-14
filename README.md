@@ -8,6 +8,11 @@ There is a CMakeLists.txt file in the root directory. CMake (version 3.5+) may b
 In either case, a library called cxxopts will be downloaded through git, from the url https://github.com/jarro2783/cxxopts
 
 cxxopts is an MIT licensed project, see its LICENSE file for details. Special thanks to jarro2783
+## Running
+Run the executable from a command line (bash, cmd.exe, etc). 
+You may place a file of page reference strings called PageFile next to the executable to run those strings.
+You may also directly invoke the program with the page reference string as the command line arguments.
+The --help option will display additional information.
 ## Project Prompt
 ### Problem 4. Measuring the Performance of Page Replacement Algorithms
 
