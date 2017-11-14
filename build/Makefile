@@ -1,7 +1,7 @@
 CXX := g++
 CXXFLAGS := -std=c++14
 
-page-replacement-simulator : cxxopts-git \
+page-replacement-simulator : external-cxxopts \
         ../src/frequency_iterative_algorithm.cpp \
         ../src/fifo_iterative_replacement_algorithm.cpp \
         ../src/file_input_retriever.cpp \
@@ -13,7 +13,7 @@ page-replacement-simulator : cxxopts-git \
         ../src/main.cpp
 	$(CXX) $(CXXFLAGS) \
 	      -I../include \
-				-I cxxopts/include \
+				-I./cxxopts/include \
 	      -o $@ \
         ../src/frequency_iterative_algorithm.cpp \
         ../src/fifo_iterative_replacement_algorithm.cpp \
@@ -25,5 +25,5 @@ page-replacement-simulator : cxxopts-git \
         ../src/optimal_iterative_replacement_algorithm.cpp \
         ../src/main.cpp
 
-cxxopts-git : 
-	git clone https://github.com/jarro2783/cxxopts.git cxxopts-git
+external-cxxopts : 
+	git clone https://github.com/jarro2783/cxxopts.git cxxopts
