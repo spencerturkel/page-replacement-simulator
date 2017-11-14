@@ -8,9 +8,9 @@ all : page-replacement-simulator
 .PHONY : clean
 
 clean :
-	rm -rf ./cxxopts ./page-replacement-simulator
+	rm -rf ./cxxopts ./page-replacement-simulator ./PageFile
 
-page-replacement-simulator : external-cxxopts \
+page-replacement-simulator : external-cxxopts pagefile \
         ../src/frequency_iterative_algorithm.cpp \
         ../src/fifo_iterative_replacement_algorithm.cpp \
         ../src/file_input_retriever.cpp \
@@ -36,3 +36,6 @@ page-replacement-simulator : external-cxxopts \
 
 external-cxxopts : 
 	[ -d cxxopts ] || git clone https://github.com/jarro2783/cxxopts.git cxxopts
+
+pagefile : ../src/PageFile
+	cp ../src/PageFile .
