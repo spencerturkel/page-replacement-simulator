@@ -1,5 +1,13 @@
 # USF COP 4600 Fall 2017 Operating Systems Group Project
 ## By Spencer Turkel And Nicolas Hempe
+## Building
+There is a Makefile provided in ./build; running `make` in the build directory will build the project on Linux. A version of g++ with C++14 support is required.
+
+There is a CMakeLists.txt file in the root directory. CMake (version 3.5+) may be used to generate build systems for any platform with a C++14 compiler.
+
+In either case, a library called cxxopts will be downloaded through git, from the url https://github.com/jarro2783/cxxopts
+
+cxxopts is an MIT licensed project, see its LICENSE file for details. Special thanks to jarro2783
 ## Project Prompt
 ### Problem 4. Measuring the Performance of Page Replacement Algorithms
 
