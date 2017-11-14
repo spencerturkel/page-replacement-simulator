@@ -4,8 +4,6 @@
 
 #include "step_result.h"
 
-namespace
-{
 	template <typename State>
 	struct iterative_replacement_algorithm
 	{
@@ -54,4 +52,3 @@ namespace
 
 		return results;
 	}
-}
