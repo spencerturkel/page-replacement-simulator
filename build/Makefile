@@ -1,6 +1,15 @@
 CXX := g++
 CXXFLAGS := -std=c++14
 
+.PHONY : all
+
+all : page-replacement-simulator
+
+.PHONY : clean
+
+clean :
+	rm -rf ./cxxopts ./page-replacement-simulator
+
 page-replacement-simulator : external-cxxopts \
         ../src/frequency_iterative_algorithm.cpp \
         ../src/fifo_iterative_replacement_algorithm.cpp \
@@ -26,4 +35,4 @@ page-replacement-simulator : external-cxxopts \
         ../src/main.cpp
 
 external-cxxopts : 
-	git clone https://github.com/jarro2783/cxxopts.git cxxopts
+	[ -d cxxopts ] || git clone https://github.com/jarro2783/cxxopts.git cxxopts
