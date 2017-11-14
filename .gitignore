@@ -4,6 +4,8 @@
 !.gitignore
 !CMakeLists.txt
 !*.md
+!*.pptx
+!*.docx
 
 !build
 !build/Makefile
