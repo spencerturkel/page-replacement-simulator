@@ -5,6 +5,9 @@
 !CMakeLists.txt
 !*.md
 
+!build
+!build/Makefile
+
 !include
 !include/**/*.h
 
